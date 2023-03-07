@@ -1,0 +1,4 @@
+<rsb:script xmlns:rsb="http://www.rssbus.com/ns/rsbscript/2">
+  <rsb:info title="sys_schemas" description="This is the schema name of the MySQL DB. ">
+  </rsb:info>
+</rsb:script>

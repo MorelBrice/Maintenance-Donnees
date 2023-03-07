@@ -1,0 +1,4 @@
+<rsb:script xmlns:rsb="http://www.rssbus.com/ns/rsbscript/2">
+  <rsb:info title="sys_tablecolumns" description="This scripts lists the table columns.">
+  </rsb:info>
+</rsb:script>

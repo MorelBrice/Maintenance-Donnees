@@ -1,0 +1,4 @@
+<rsb:script xmlns:rsb="http://www.rssbus.com/ns/rsbscript/2">
+  <rsb:info title="sys_data" description="This is a system table that provides data from the specified Oracle DB. Normally you do not use this table directly.">
+  </rsb:info>
+</rsb:script>

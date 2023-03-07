@@ -1,0 +1,4 @@
+<rsb:script xmlns:rsb="http://www.rssbus.com/ns/rsbscript/2">
+  <rsb:info title="sys_procedures" description="This lists the available procedures.">
+  </rsb:info>
+</rsb:script>

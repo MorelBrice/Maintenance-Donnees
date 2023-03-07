@@ -1,0 +1,4 @@
+<rsb:script xmlns:rsb="http://www.rssbus.com/ns/rsbscript/2">
+  <rsb:info title="sys_spparams" description="This is a system table that lists the metadata of the procedure parameters.">
+  </rsb:info>
+</rsb:script>

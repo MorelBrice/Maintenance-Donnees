@@ -1,0 +1,4 @@
+<rsb:script xmlns:rsb="http://www.rssbus.com/ns/rsbscript/2">
+  <rsb:info title="sys_transaction" description="This is a system table that enables you call a store procedure from the specified MySQL DB. Normally you do not use this table directly.">
+  </rsb:info>
+</rsb:script>

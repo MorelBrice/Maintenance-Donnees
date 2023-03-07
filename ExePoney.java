@@ -41,8 +41,7 @@ public class ExePoney {
             System.out.println("| 3. Gérer les Personnes      |");
             System.out.println("| 4. Gérer les élèves         |");
             System.out.println("| 5. Gérer les Moniteurs      |");
-            System.out.println("| 6. Gérer les Cours          |");
-            System.out.println("| 7. Quitter                  |");
+            System.out.println("| 6. Quitter                  |");
             System.out.println("|_____________________________|");
             System.out.print("\n");
             int rep = sc.nextInt();
@@ -67,10 +66,6 @@ public class ExePoney {
                     gererMoniteurs();
                     break;
 
-                case 6:
-                    gererCours();
-                    break;
-
                 default : 
                     finiPrincipal = true;
                     sc.close();
@@ -88,7 +83,7 @@ public class ExePoney {
             System.out.println("|-----------------------------|");
             System.out.println("| 1. Ajouter une inscription  |");
             System.out.println("| 2. Enlever une inscription  |");
-            System.out.println("| 3. Regarder les cours       |");
+            System.out.println("| 3. Lister les Cours         |");
             System.out.println("| 4. Retour                   |");
             System.out.println("|_____________________________|");
             System.out.print("\n");
@@ -115,6 +110,7 @@ public class ExePoney {
 			            System.out.println(e.getMessage());
                     }
                     break;
+
                 case 2 :
                     System.out.println("A quel cours se désinscrire : ");
                     int idc2 = Integer.valueOf(System.console().readLine());
@@ -129,7 +125,8 @@ public class ExePoney {
 			            System.out.println(e.getMessage());
                     }
                     break;
-                case 3:
+
+                case 3 :
                     AppPoney.getCours(c);
                     break;
 
@@ -156,15 +153,75 @@ public class ExePoney {
             int rep = sc.nextInt();
             switch(rep){
                 case 1 :
+                    AppPoney.getPoney(c);
                     break;
 
                 case 2 :
+                    System.out.println("Veuillez remplir ces informations :"+"\n");
+
+                    System.out.println("Nom du Poney : ");
+                    String nomP = String.valueOf(System.console().readLine());
+
+                    System.out.println("La robe du Poney : ");
+                    String robe = String.valueOf(System.console().readLine());
+
+                    System.out.println("La date de naissance du Poney (YYYY-MM-DD) : ");
+                    String DDNP = String.valueOf(System.console().readLine());
+
+                    System.out.println("La discipline du Poney : ");
+                    String disciplineP = String.valueOf(System.console().readLine());
+
+                    System.out.println("Le nombre d'années de service du Poney : ");
+                    int anneService = Integer.valueOf(System.console().readLine());
+
+                    try{
+                        AppPoney.addPoney(c, nomP, robe, DDNP, disciplineP, anneService);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+			            System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 3:
+                    System.out.println("Entrer l'identifiant du Poney à supprimer (min=100): ");
+                    int idp = Integer.valueOf(System.console().readLine());
+
+                    try{
+                        AppPoney.remPoney(c, idp);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 4:
+                    System.out.println("Entrer l'identifiant du Poney à modifier (min=100): ");
+                    int ModIdp = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("Nom du Poney : ");
+                    String NewNomP = String.valueOf(System.console().readLine());
+
+                    System.out.println("La robe du Poney : ");
+                    String NewRobe = String.valueOf(System.console().readLine());
+
+                    System.out.println("La date de naissance du Poney (YYYY-MM-DD) : ");
+                    String NewDDNP = String.valueOf(System.console().readLine());
+
+                    System.out.println("La discipline du Poney : ");
+                    String NewDisciplineP = String.valueOf(System.console().readLine());
+
+                    System.out.println("Le nombre d'années de service du Poney : ");
+                    int NewAnneService = Integer.valueOf(System.console().readLine());
+
+                    try{
+                        AppPoney.modifPoney(c,ModIdp, NewNomP, NewRobe, NewDDNP, NewDisciplineP, NewAnneService);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+			            System.out.println(e.getMessage());
+                    }
                     break;
 
                 default : 
@@ -190,15 +247,63 @@ public class ExePoney {
         int rep = sc.nextInt();
         switch(rep){
             case 1 :
+                AppPoney.getPersonne(c);
                 break;
 
             case 2 :
+                    System.out.println("Veuillez remplir ces informations :"+"\n");
+
+                    System.out.println("Nom de la Personne : ");
+                    String nom = String.valueOf(System.console().readLine());
+
+                    System.out.println("Prenom de la Personne : ");
+                    String prenom = String.valueOf(System.console().readLine());
+
+                    System.out.println("La date de naissance de la Personne (YYYY-MM-DD) : ");
+                    String DDN = String.valueOf(System.console().readLine());
+
+                    try{
+                        AppPoney.addPersonne(c, nom, prenom, DDN);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+			            System.out.println(e.getMessage());
+                    }
                 break;
 
             case 3:
+                    System.out.println("Entrer l'identifiant de la personne à supprimer (min=1): ");
+                    int idPersonne = Integer.valueOf(System.console().readLine());
+
+                    try{
+                        AppPoney.remPersonne(c, idPersonne);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+                        System.out.println(e.getMessage());
+                    }
                 break;
 
             case 4:
+                System.out.println("Entrer l'identifiant de la personne à modifier (min=1): ");
+                int ModidPersonne = Integer.valueOf(System.console().readLine());
+
+                System.out.println("Nom de la Personne : ");
+                String NewNom = String.valueOf(System.console().readLine());
+
+                System.out.println("prenom de la Personne : ");
+                String NewPrenom = String.valueOf(System.console().readLine());
+
+                System.out.println("La date de naissance de la Personne (YYYY-MM-DD) : ");
+                String NewDDN = String.valueOf(System.console().readLine());
+
+                try{
+                    AppPoney.modifPersonne(c, ModidPersonne, NewNom, NewPrenom, NewDDN);
+                }
+                catch(SQLException e){
+                    System.out.println("Erreur :/"); 
+                    System.out.println(e.getMessage());
+                }
                 break;
 
             default : 
@@ -224,15 +329,69 @@ public class ExePoney {
             int rep = sc.nextInt();
             switch(rep){
                 case 1 :
+                    AppPoney.getEleve(c);
                     break;
 
                 case 2 :
+                    System.out.println("Veuillez remplir ces informations :"+"\n");
+
+                    System.out.println("Identifiant de la Personne : ");
+                    int idPersonne = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("Poids de l'Eleve (kg) : ");
+                    int poids = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("galop de l'Eleve : ");
+                    int galop = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("taille de l'Eleve (cm) : ");
+                    int taille = Integer.valueOf(System.console().readLine());
+
+                    try{
+                        AppPoney.addEleve(c, idPersonne, poids, galop, taille);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+			            System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 3:
+                    System.out.println("Entrer l'identifiant de l'Eleve à supprimer (min=1000): ");
+                    int ide = Integer.valueOf(System.console().readLine());
+
+                    try{
+                        AppPoney.remPersonne(c, ide);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 4:
+                    System.out.println("Entrer l'identifiant de l'Eleve à modifier (min=1000): ");
+                    int Modide = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("Identifiant de l'Eleve : ");
+                    int NewIdPersonne = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("Poids de l'Eleve (kg) : ");
+                    int NewPoids = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("galop de l'Eleve : ");
+                    int NewGalop = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("taille de l'Eleve (cm) : ");
+                    int NewTaille = Integer.valueOf(System.console().readLine());
+
+                    try{
+                        AppPoney.modifEleve(c, Modide, NewIdPersonne, NewPoids, NewGalop, NewTaille);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 default : 
@@ -258,15 +417,64 @@ public class ExePoney {
             int rep = sc.nextInt();
             switch(rep){
                 case 1 :
+                    AppPoney.getMoniteur(c);
                     break;
 
                 case 2 :
+                    System.out.println("Veuillez remplir ces informations :"+"\n");
+
+                    System.out.println("Identifiant de la Personne : ");
+                    int idPersonne = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("License du Moniteur : ");
+                    String license = String.valueOf(System.console().readLine());
+
+                    System.out.println("Description du Moniteur : ");
+                    String descriptionM = String.valueOf(System.console().readLine());
+
+                    try{
+                        AppPoney.addMoniteur(c, idPersonne, license, descriptionM);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+			            System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 3:
+                    System.out.println("Entrer l'identifiant du Moniteur à supprimer (min=200): ");
+                    int idm = Integer.valueOf(System.console().readLine());
+
+                    try{
+                        AppPoney.remMoniteur(c, idm);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 4:
+                    System.out.println("Entrer l'identifiant du Moniteur à modifier (min=1000): ");
+                    int Modidm = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("Identifiant de la Personne : ");
+                    int NewIdPersonne = Integer.valueOf(System.console().readLine());
+
+                    System.out.println("License du Moniteur : ");
+                    String NewLicense = String.valueOf(System.console().readLine());
+
+                    System.out.println("Description du Moniteur : ");
+                    String NewDescriptionM = String.valueOf(System.console().readLine());
+
+
+                    try{
+                        AppPoney.modifMoniteur(c, Modidm, NewIdPersonne, NewLicense, NewDescriptionM);
+                    }
+                    catch(SQLException e){
+                        System.out.println("Erreur :/"); 
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 default : 
@@ -275,40 +483,4 @@ public class ExePoney {
             }
         }
     }
-
-    public static void gererCours() throws SQLException{
-
-        while(!finiCours){
-            System.out.println(" _____________________________");
-            System.out.println("|     Que souhaitez vous ?    |");
-            System.out.println("|-----------------------------|");
-            System.out.println("| 1. Lister les Cours         |");
-            System.out.println("| 2. Ajouter un Cours         |");
-            System.out.println("| 3. Supprimer un Cours       |");
-            System.out.println("| 4. Modifier un Cours        |");
-            System.out.println("| 5. Retour                   |");
-            System.out.println("|_____________________________|");
-            System.out.print("\n");
-            int rep = sc.nextInt();
-            switch(rep){
-                case 1 :
-                    break;
-
-                case 2 :
-                    break;
-
-                case 3:
-                    break;
-
-                case 4:
-                    break;
-
-                default : 
-                    finiCours = true;
-                    break;
-            }
-        }
-    }
-
-
 }

@@ -1,0 +1,4 @@
+<rsb:script xmlns:rsb="http://www.rssbus.com/ns/rsbscript/2">
+  <rsb:info title="sys_catalogs" description="This is the catalog name of the MySQL DB. ">
+  </rsb:info>
+</rsb:script>
